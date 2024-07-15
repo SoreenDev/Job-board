@@ -6,7 +6,7 @@ use App\Models\Job;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Job>
+ * @extends Factory<Job>
  */
 class JobFactory extends Factory
 {
@@ -24,6 +24,7 @@ class JobFactory extends Factory
             'location' => fake()->city,
             'category' => fake()->randomElement(Job::$category),
             'experience' => fake()->randomElement(Job::$experience),
+
         ];
     }
 }

@@ -1,4 +1,5 @@
 <x-layout>
+    <x-breadcrumbs class="mb-4" />
     @foreach($jobs as $job)
     <x-job-card :$job>
         <div>

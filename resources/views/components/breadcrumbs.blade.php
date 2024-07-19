@@ -13,13 +13,15 @@
                 Job
             </a>
         </li>
-        <li>
-            →
-        </li>
-        <li>
-            <a href="#">
-                {{ $job->title }}
-            </a>
-        </li>
+       @if(isset($job))
+            <li>
+                →
+            </li>
+            <li>
+                <a href="#">
+                    {{ $job->title }}
+                </a>
+            </li>
+       @endif
     </ul>
 </nav>

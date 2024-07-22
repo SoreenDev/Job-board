@@ -3,9 +3,7 @@
 <head>
 
     <title>Laravel</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="mx-auto mt-10 max-w-2xl bg-gray-600 text-slate-700">
     {{ $slot }}

@@ -5,23 +5,32 @@
                 Home
             </a>
         </li>
-        <li>
-            →
-        </li>
-        <li>
-            <a href="{{ route('job.index') }}">
-                Job
-            </a>
-        </li>
-       @if(isset($job))
+
+        @foreach($links as $lable => $link)
             <li>
                 →
             </li>
             <li>
-                <a href="#">
-                    {{ $job->title }}
+                <a href="{{$link}}">
+                    {{$lable}}
                 </a>
             </li>
-       @endif
+
+        @endforeach
+        {{--        <li>--}}
+        {{--            <a href="{{ route('job.index') }}">--}}
+        {{--                Job--}}
+        {{--            </a>--}}
+        {{--        </li>--}}
+        {{--       @if(isset($job))--}}
+        {{--            <li>--}}
+        {{--                <a href="#">--}}
+        {{--                    {{ $job->title }}--}}
+        {{--                    →--}}
+        {{--            </li>--}}
+        {{--            <li>--}}
+        {{--           </a>--}}
+        {{--            </li>--}}
+        {{--       @endif--}}
     </ul>
 </nav>

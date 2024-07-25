@@ -7,14 +7,14 @@
 
                 <div>
                     <div class="mb-1 font-semibold">Search</div>
-                    <x-text-input value="" name="search" placeholder="Search for any text" />
+                    <x-text-input value="{{ request('search') }}" name="search" placeholder="Search for any text" />
                 </div>
 
                 <div>
                     <div class="mb-1 font-semibold">Salary</div>
                     <div class="flex space-x-2  ">
-                        <x-text-input value="" name="min_salary" placeholder="From" />
-                        <x-text-input value="" name="max_salary" placeholder="To" />
+                        <x-text-input value="{{ request('min_salary') }}" name="min_salary" placeholder="From" />
+                        <x-text-input value="{{ request('max_salary') }}" name="max_salary" placeholder="To" />
                     </div>
                 </div>
                 <div>3</div>

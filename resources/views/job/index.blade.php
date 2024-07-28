@@ -17,31 +17,15 @@
                         <x-text-input value="{{ request('max_salary') }}" name="max_salary" placeholder="To" />
                     </div>
                 </div>
+
                 <div>
                     <div class="mb-1 font-semibold">Experience</div>
-
-                    <label for="experience" class=" mb-1 flex items-center">
-                        <input type="radio" name="experience" value="" @checked(!request('experience'))>
-                        <span class="ml-2">ALL</span>
-                    </label>
-
-                    <label for="experience" class=" mb-1 flex items-center">
-                        <input type="radio" name="experience" value="junior" @checked('junior' === request('experience'))>
-                        <span class="ml-2">Junior</span>
-                    </label>
-
-                    <label for="experience" class=" mb-1 flex items-center">
-                        <input type="radio" name="experience" value="mid_level" @checked('mid_level' === request('experience'))>
-                        <span class="ml-2">Mid Level</span>
-                    </label>
-                    <label for="experience" class=" mb-1 flex items-center">
-                        <input type="radio" name="experience" value="senior" @checked('senior' === request('experience'))>
-                        <span class="ml-2">Senior</span>
-                    </label>
-
+                    <x-radio-group name="experience" :options="\App\Models\Job::$experience" />
                 </div>
-                <div>4</div>
-
+                <div>
+                    <div class="mb-1 font-semibold">Category</div>
+                    <x-radio-group name="category" :options="\App\Models\Job::$category" />
+                </div>
                 <button class="w-full">Filter</button>
             </div>
         </form>

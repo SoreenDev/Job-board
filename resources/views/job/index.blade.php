@@ -26,7 +26,8 @@
                     <div class="mb-1 font-semibold">Category</div>
                     <x-radio-group name="category" :options="\App\Models\Job::$category" />
                 </div>
-                <button class="w-full">Filter</button>
+                <x-button class="w-full">Filter</x-button>
+                <x-link-buttum class="w-full" :href="route('job.index')">Reset</x-link-buttum>
             </div>
         </form>
     </x-card>

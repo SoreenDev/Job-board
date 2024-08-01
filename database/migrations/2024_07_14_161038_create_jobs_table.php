@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('category');
             $table->enum('experience', Job::$experience);
+            $table->foreignIdFor(\App\Models\Employer::class);
             $table->timestamps();
         });
     }

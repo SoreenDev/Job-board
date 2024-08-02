@@ -29,6 +29,6 @@ class JobRepository implements JobRepositoryInterface
 
             ->when($filters['category'] ?? null, fn ($query , $category) => $query->where('category',$category))
 
-            ->with('employer')->get();
+            ->with('employer.jobs')->get();
     }
 }

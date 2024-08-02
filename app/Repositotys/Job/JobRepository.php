@@ -12,9 +12,13 @@ class JobRepository implements JobRepositoryInterface
         return Job::query()->when($filters['search'] ?? null,function ($query, $search)
         {
             $query->where(function($query) use ($search) {
-                    $query
-                        ->where('title','like',"%".$search."%")
-                        ->orWhere('description','like',"%".$search."%");
+                $query
+                    ->where('title','like',"%".$search."%")
+                    ->orWhere('description','like',"%".$search."%")
+                    ->orWhereHas('employer',
+                        function($query) use($search) {
+                            $query->Where('company_name', 'like', "%" . $search . "%");
+                    });
             });
         })
             ->when($filters['min_salary'] ?? null, fn ($query , $min_salary) => $query->where('salary', '>=', $min_salary))
@@ -25,6 +29,6 @@ class JobRepository implements JobRepositoryInterface
 
             ->when($filters['category'] ?? null, fn ($query , $category) => $query->where('category',$category))
 
-            ->get();
+            ->with('employer')->get();
     }
 }

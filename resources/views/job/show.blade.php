@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="text-xs">
-                    {{ number_format($other_job->salary) }}
+                    ${{ number_format($other_job->salary) }}
                 </div>
             </div>
         @endforeach

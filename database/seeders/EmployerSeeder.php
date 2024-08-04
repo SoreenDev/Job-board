@@ -21,7 +21,6 @@ class EmployerSeeder extends Seeder
             $employer = Employer::factory()->create(['user_id' => $users->pop()]);
             Job::factory(rand(1,4))->create(['employer_id'=> $employer->id]);
 
-
         }
     }
 }

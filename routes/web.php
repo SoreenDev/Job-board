@@ -18,5 +18,7 @@ Route::get('/',fn()=> to_route('job.index'));
 
 Route::get('login', fn() => to_route('auth.create'))->name('login'); # for middleware auth
 Route::resource('auth', AuthController::class)->only('store','create');
+Route::delete('logout' , fn() => to_route('auth.destroy'))->name('logout');
+Route::delete('auth',[AuthController::class,'destroy'])->name('auth.destroy');
 
 Route::resource('job', JobController::class)->only('index','show');

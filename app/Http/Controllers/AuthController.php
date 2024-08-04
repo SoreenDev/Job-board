@@ -26,8 +26,12 @@ class AuthController extends Controller
         return redirect()->back()->with('error', 'Invalid Credentials');
     }
 
-    public function destroy(string $id)
+    public function destroy()
     {
-        //
+        auth()->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerate();
+
+        return redirect('/');
     }
 }

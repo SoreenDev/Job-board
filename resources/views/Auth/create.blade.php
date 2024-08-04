@@ -1,6 +1,7 @@
 <x-layout>
+    <x-breadcrumbs  :links="[ 'login' => '#' ]"  class="mb-4"  />
 
-    <h2 class="my-16 text-center text-4xl font-medium text-neutral-50"> Sign in to account</h2>
+    <h2 class="my-6 text-center text-4xl font-medium text-neutral-50"> Sign in to account</h2>
     <x-card class="py-8 px-16">
         <form action="{{ route('auth.store') }}" method="POST">
             @csrf

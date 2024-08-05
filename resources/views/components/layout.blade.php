@@ -13,34 +13,39 @@
 </style>
 <body class="body mx-auto mt-10 max-w-2xl bg-gray-600 text-slate-700">
 
-<nav class="mb-8 flex justify-between text-2xl font-medium text-neutral-50">
-    <ul class=" flex space-x-2">
-        <li>
-            <a href="{{ route('job.index') }}">Home</a>
-        </li>
-    </ul>
-    <ul class=" flex space-x-6">
-        @auth
-            <li class="text-indigo-300">
-                {{ auth()->user()->name ?? 'Anonymous' }}
-            </li>
+    <nav class="mb-8 flex justify-between text-2xl font-medium text-neutral-50">
+        <ul class=" flex space-x-2">
             <li>
-                <form action="{{ route('auth.destroy') }}" method="post">
-                    @csrf @method('DELETE')
-
-                    <button class="text-red-300">Logout</button>
-                </form>
+                <a href="{{ route('job.index') }}">Home</a>
             </li>
-        @else
-            <li>
-                <a href="{{ route('auth.create') }}">Sign in</a>
-            </li>
-        @endauth
+        </ul>
+        <ul class=" flex space-x-6">
+            @auth
+                <li class="text-indigo-300">
+                    {{ auth()->user()->name ?? 'Anonymous' }}
+                </li>
+                <li>
+                    <form action="{{ route('auth.destroy') }}" method="post">
+                        @csrf @method('DELETE')
 
-    </ul>
+                        <button class="text-red-300">Logout</button>
+                    </form>
+                </li>
+            @else
+                <li>
+                    <a href="{{ route('auth.create') }}">Sign in</a>
+                </li>
+            @endauth
 
-</nav>
+        </ul>
 
+    </nav>
+    @if( session('success'))
+        <div class="my-8 rounded-md border-l-8 border-green-600 bg-slate-50 p-4 text-green-700 bg-opacity-75">
+            <p class="font-bold">Success !</p>
+            <p> {{ session('success') }} </p>
+        </div>
+    @endif
     {{ $slot }}
 </body>
 

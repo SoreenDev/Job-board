@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\jobApplication\StoreJobApplicationRequest;
 use App\Models\Job;
+use App\Policies\JobPolicy;
 use Illuminate\Http\Request;
 
 class JobApplicationController extends Controller
@@ -11,17 +12,18 @@ class JobApplicationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Job $job)
+    public function index()
     {
-        return view('job_application.create', compact('job'));
+
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Job $job)
     {
-        //
+        $this->authorize('apply',[JobPolicy::class,$job]);
+        return view('job_application.create', compact('job'));
     }
 
     /**

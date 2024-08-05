@@ -25,5 +25,5 @@ Route::delete('auth',[AuthController::class,'destroy'])->name('auth.destroy');
 Route::resource('job', JobController::class)->only('index','show');
 
 Route::middleware('auth')->group(function(){
-   Route::resource('job.application', JobApplicationController::class)->only('index','store');
+   Route::resource('job.application', JobApplicationController::class)->only('create','store');
 });

@@ -1,6 +1,9 @@
 <x-layout>
     <x-breadcrumbs :$job :links="['Jobs'=> route('job.index'), $job->title => '#' ]"  class="mb-4"  />
     <x-job-card :$job >
+        <p class="mb-4 text-sm text-slate-500">
+            {!! nl2br(e($job->description)) !!}
+        </p>
         @can('apply',$job)
             <x-link-buttum href="{{ route('job.application.create',$job) }}">Apply</x-link-buttum>
         @else

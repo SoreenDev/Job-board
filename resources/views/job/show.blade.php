@@ -1,7 +1,13 @@
 <x-layout>
     <x-breadcrumbs :$job :links="['Jobs'=> route('job.index'), $job->title => '#' ]"  class="mb-4"  />
     <x-job-card :$job >
-        <x-link-buttum href="{{ route('job.application.create',$job) }}">Apply</x-link-buttum>
+        @can('apply',$job)
+            <x-link-buttum href="{{ route('job.application.create',$job) }}">Apply</x-link-buttum>
+        @else
+            <div class=" mt-4 text-center text-sm text-slate-500 font-bold hover:text-red-900">
+                You already applied to this job
+            </div>
+        @endcan
     </x-job-card>
     <x-card  class="mb-4">
         <h2 class="mb-4 text-lg font-medium">

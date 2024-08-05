@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\jobApplication\StoreJobApplicationRequest;
 use App\Models\Job;
 use Illuminate\Http\Request;
 
@@ -26,9 +27,13 @@ class JobApplicationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreJobApplicationRequest $request  , Job $job)
     {
-        //
+        $job->jobapplication()->create([
+            'user_id' => auth()->id(),
+            'salary' => $request->validated()['expected_salary'],
+        ]);
+        return redirect()->route('job.show',$job)->with('success', 'Job Application Submitted Successfully');
     }
 
     /**

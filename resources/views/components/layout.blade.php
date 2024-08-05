@@ -6,11 +6,32 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <style>
+    @keyframes boxAnomatio {
+        from {
+            left: 5%;
+        }
+        to {
+            left: 95%;
+        }
+    }
     .body{
         background: rgb(2,0,36);
         background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(92,9,119,1) 37%, rgba(95,9,121,1) 57%, rgba(2,0,36,1) 100%);
     }
+    .animation {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        /*background-color: #ffffff60;*/
+        background: rgb(200,200,200);
+        background: linear-gradient(90deg, rgba(200,200,200,0.05) 0%, rgba(255,255,255,0.20) 51%, rgba(200,200,200,0.05) 100%);
+        animation: boxAnomatio 6s ;
+        /*animation: boxAnomatio 8s alternate-reverse infinite;*/
+    }
 </style>
+
 <body class="body mx-auto mt-10 max-w-2xl bg-gray-600 text-slate-700">
 
     <nav class="mb-8 flex justify-between text-2xl font-medium text-neutral-50">

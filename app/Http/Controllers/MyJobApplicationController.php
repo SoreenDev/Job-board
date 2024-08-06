@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employer;
-use Illuminate\Http\Request;
+use App\Repositorys\MyJobApplicationRepository\MyJobApplicationRepositoryInterface;
 
 class MyJobApplicationController extends Controller
 {
+    protected MyJobApplicationRepositoryInterface $repository ;
+    public function __construct(MyJobApplicationRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function index()
     {
-        return view('my_job_application.index' ,
-            ['applications' => auth()->user()->jobapplication()->with('job','job.employer')->latest()->get()]
-        );
+        $user =$this->repository->getAll(auth()->user());
+//        dd($user[0]->job->job_applications_count);
+        return view('my_job_application.index' , ['applications' => $this->repository->getAll(auth()->user())]);
     }
 
     public function destroy(string $id)

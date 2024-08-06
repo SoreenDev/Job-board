@@ -31,7 +31,7 @@ class JobApplicationController extends Controller
      */
     public function store(StoreJobApplicationRequest $request  , Job $job)
     {
-        $job->jobapplication()->create([
+        $job->job_applications()->create([
             'user_id' => auth()->id(),
             'salary' => $request->validated()['expected_salary'],
         ]);

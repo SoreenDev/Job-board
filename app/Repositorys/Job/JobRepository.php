@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositotys\Job;
+namespace App\Repositorys\Job;
 
 use App\Models\Job;
 use Illuminate\Database\Query\Builder as QueryBuilder;

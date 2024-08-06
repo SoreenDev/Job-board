@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
-use App\Repositotys\Job\JobRepositoryInterface;
-use Illuminate\Http\Request;
+use App\Repositorys\Job\JobRepositoryInterface;
+    use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    private JobRepositoryInterface $jobRepository;
+    protected JobRepositoryInterface $jobRepository;
     public function __construct(JobRepositoryInterface $jobRepository)
     {
         $this->jobRepository = $jobRepository;

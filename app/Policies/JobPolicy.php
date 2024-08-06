@@ -90,6 +90,6 @@ class JobPolicy
      */
     public function apply(User $user, Job $job): bool
     {
-        return !   $job->jobapplication()->pluck('user_id')->contains($user->id) ;
+        return ! $job->jobapplication()->pluck('user_id')->contains($user->id) ;
     }
 }

@@ -10,7 +10,7 @@ class MyJobApplicationController extends Controller
     public function index()
     {
         return view('my_job_application.index' ,
-            ['applications' => auth()->user()->jobapplication->last()->with('job')->get()]
+            ['applications' => auth()->user()->jobapplication()->with('job','job.employer')->latest()->get()]
         );
     }
 

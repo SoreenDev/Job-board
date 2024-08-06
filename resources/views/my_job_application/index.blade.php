@@ -1,7 +1,7 @@
 
 <x-layout>
     <x-breadcrumbs :links="['My Job application' => '#' ]" />
-    @foreach($applications as $application)
+    @forelse($applications as $application)
         <x-job-card :job=" $application->job " >
             <div class="flex items-center justify-between text-sm text-slate-500">
                 <div>
@@ -20,9 +20,26 @@
                     </div>
                 </div>
 
-                <div>2</div>
+                <div>
+                    <form action="{{ route('my_job_application.destroy', $application) }}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        <x-button class="hover:bg-red-400">Cancel</x-button>
+                    </form>
+                </div>
             </div>
         </x-job-card>
+    @empty
 
-    @endforeach
+            <div class="rounded-md border border-dashed text-slate-200 border-slate-300 p-8">
+                <div class="text-center font-medium">
+                    No job application yet
+                </div>
+                <div class="text-center">
+                    Go fine some jobs
+                    <a class="text-blue-500 hover:underline" href="{{ route('job.index') }}">here !</a>
+                </div>
+            </div>
+
+    @endforelse
 </x-layout>

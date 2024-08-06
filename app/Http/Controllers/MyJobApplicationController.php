@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobApplication;
 use App\Repositorys\MyJobApplicationRepository\MyJobApplicationRepositoryInterface;
 
 class MyJobApplicationController extends Controller
@@ -19,8 +20,11 @@ class MyJobApplicationController extends Controller
         return view('my_job_application.index' , ['applications' => $this->repository->getAll(auth()->user())]);
     }
 
-    public function destroy(string $id)
+    public function destroy(jobApplication $myJobApplication) #chenge name for mach Eloquent model
     {
-        //
+
+        $myJobApplication->delete();
+
+        return redirect()->back()->with('success' , 'Job Application Canceled Successfully');
     }
 }

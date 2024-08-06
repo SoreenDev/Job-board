@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained();
             $table->foreignIdFor(Job::class)->constrained();
             $table->unsignedInteger('salary');
+            $table->string('cv_path')->nullable();
             $table->timestamps();
         });
     }
@@ -28,5 +29,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('job_applications');
+        Schema::table('job_applications', function (Blueprint $table) {
+            $table->dropColumn('cv_path');
+        });
     }
 };

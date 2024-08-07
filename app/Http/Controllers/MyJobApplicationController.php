@@ -16,7 +16,6 @@ class MyJobApplicationController extends Controller
     public function index()
     {
         $user =$this->repository->getAll(auth()->user());
-//        dd($user[0]->job->job_applications_count);
         return view('my_job_application.index' , ['applications' => $this->repository->getAll(auth()->user())]);
     }
 

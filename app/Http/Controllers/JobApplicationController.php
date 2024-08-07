@@ -31,12 +31,11 @@ class JobApplicationController extends Controller
      */
     public function store(StoreJobApplicationRequest $request  , Job $job)
     {
-        $file = $request->file('cv');
-        $path = $file->store('cvs','private');
+        $request->validated();
         $job->job_applications()->create([
             'user_id' => auth()->id(),
-            'salary' => $request->validated()['expected_salary'],
-            'cv_path' => $path,
+            'salary' => $request->input('expected_salary'),
+            'cv_path' => $request->file('cv')->store('cvs','private'),
         ]);
         return redirect()->route('job.show',$job)->with('success', 'Job Application Submitted Successfully');
     }

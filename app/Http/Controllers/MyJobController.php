@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\job\JobStoreRequest;
 use Illuminate\Http\Request;
 
 class MyJobController extends Controller
 {
+    public function __construct()
+    {
+//        dd(1);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -25,9 +31,11 @@ class MyJobController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(JobStoreRequest $request)
     {
-        //
+        $request->user()->employer->jobs()->create($request->validated());
+
+        return redirect()->route('my-jobs.index')->with('success', 'Job has been created.');
     }
 
     /**

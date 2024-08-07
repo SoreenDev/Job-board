@@ -11,3 +11,8 @@
         <span class="ml-2">{{ ucfirst($option) }}</span>
     </label>
 @endforeach
+@error($name)
+<div class=" mt-1 text-red-500 text-sm">
+    {{ "* ".$message }}
+</div>
+@enderror

@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 
 class MyJobController extends Controller
 {
-    public function __construct()
-    {
-//        dd(1);
-    }
 
     /**
      * Display a listing of the resource.

@@ -30,10 +30,9 @@
                 </div>
                 <div class="col-span-2 mt-4">
                     <x-button  class="w-full">
-                        Creat
+                        Create
                     </x-button>
                 </div>
-
             </div>
         </form>
     </x-card>

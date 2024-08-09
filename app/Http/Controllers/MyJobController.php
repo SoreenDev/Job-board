@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\job\JobStoreRequest;
+use App\Models\Job;
 use Illuminate\Http\Request;
 
 class MyJobController extends Controller
@@ -13,7 +14,11 @@ class MyJobController extends Controller
      */
     public function index()
     {
-        return view('my_job.index');
+        return view('my_job.index',
+        [
+            'jobs' => auth()->user()->employer->jobs()->with('employer', 'job_applications','job_applications.user')->get()
+
+        ]);
     }
 
     /**

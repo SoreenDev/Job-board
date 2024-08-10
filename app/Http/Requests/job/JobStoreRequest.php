@@ -23,8 +23,8 @@ class JobStoreRequest extends FormRequest
             'description' => ['required' , 'string' , 'min:15'],
             'salary' => ['required', 'numeric' , 'min:5000', 'max:10000000'],
             'location' => ['required' , 'string' , 'min:3' , 'max:255'],
-            'category' => ['required', 'in: '.implode(',' ,Job::$category)],
-            'experience' => ['required','in: '.implode(',' ,Job::$experience)]
+            'category' => ['required', 'in:'.implode(',' ,Job::$category)],
+            'experience' => ['required','in:'.implode(',' ,Job::$experience)]
         ];
     }
 }

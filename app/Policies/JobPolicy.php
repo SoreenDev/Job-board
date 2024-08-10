@@ -15,7 +15,7 @@ class JobPolicy
      */
     public function viewAny(?User $user): bool
     {
-        return true;
+        return $user->employer() !== null;
     }
 
     /**
@@ -36,18 +36,25 @@ class JobPolicy
      */
     public function create(User $user): bool
     {
-        return false ;
+        return $user->employer() !== null ;
     }
 
+
     /**
-     * Determine whether the user can update the model.
      * @param User $user
      * @param Job $job
-     * @return bool
+     * @return Response|bool
      */
-    public function update(User $user, Job $job): bool
+    public function update(User $user, Job $job): Response|bool
     {
-        return false ;
+        if( $user->employer() === null)
+            return false;
+        if ($user->employer->id !== $job->employer->id)
+            return  false;
+        if (  $job->job_applications()->count() !== 0)
+            return Response::deny('Cannot change the job with applications');
+
+        return true ;
     }
 
     /**
@@ -58,7 +65,12 @@ class JobPolicy
      */
     public function delete(User $user, Job $job): bool
     {
-        return false ;
+        if( $user->employer() === null)
+            return false;
+        if ($user->employer->id !== $job->employer->id)
+            return  false;
+
+        return true ;
     }
 
     /**

@@ -25,8 +25,18 @@
                         <div>no application yet</div>
                    @endforelse
                 </div>
-                <div class="mt-4 flex space-x-2">
-                    <x-link-buttum href="{{ route('my-jobs.edit' , $job) }}"> Edite</x-link-buttum>
+                <div class=" mb-4 flex justify-between">
+                    <div class="mt-4 flex space-x-2">
+                        <form action="{{ route('my-jobs.update' , $job) }}" method="POST">
+                            @csrf @method('PUT')
+                            <x-button> Delete</x-button>
+                        </form>                    </div>
+                    <div class="mt-4 flex space-x-2">
+                        <form action="{{ route('my-jobs.destroy' , $job) }}" method="POST">
+                            @csrf @method('DELETE')
+                            <x-button> Delete</x-button>
+                        </form>
+                    </div>
                 </div>
             </x-job-card>
         </div>

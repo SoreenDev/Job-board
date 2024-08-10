@@ -13,6 +13,7 @@ class MyJobController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Job::class);
         return view('my_job.index',
         [
             'jobs' => auth()->user()->employer->jobs()->with('employer', 'job_applications','job_applications.user')->get()
@@ -33,6 +34,8 @@ class MyJobController extends Controller
      */
     public function store(JobStoreRequest $request)
     {
+        $this->authorize('create', Job::class);
+
         $request->user()->employer->jobs()->create($request->validated());
 
         return redirect()->route('my-jobs.index')->with('success', 'Job has been created.');
@@ -52,6 +55,8 @@ class MyJobController extends Controller
      */
     public function update(JobStoreRequest $request, Job $my_job)
     {
+        $this->authorize('update',[ Job::class , $my_job]);
+
         $my_job->update($request->validated());
         return redirect()->route('my-jobs.index')->with('success', 'Job updated successfully .');
     }
@@ -59,8 +64,12 @@ class MyJobController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Job $my_job)
     {
-        //
+        $this->authorize('delete',[ Job::class , $my_job]);
+        $my_job->delete();
+
+        return redirect()->route('my-jobs.index')->with('success', 'Job delete successfully .');
+
     }
 }

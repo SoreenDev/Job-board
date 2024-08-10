@@ -25,6 +25,9 @@
                         <div>no application yet</div>
                    @endforelse
                 </div>
+                <div class="mt-4 flex space-x-2">
+                    <x-link-buttum href="{{ route('my-jobs.edit' , $job) }}"> Edite</x-link-buttum>
+                </div>
             </x-job-card>
         </div>
     @empty

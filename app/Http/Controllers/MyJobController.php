@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\job\JobStoreRequest;
 use App\Models\Job;
-use Illuminate\Http\Request;
 
 class MyJobController extends Controller
 {
@@ -42,25 +41,19 @@ class MyJobController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Job $my_job)
     {
-        //
+        return view('my_job.edite', ['job' => $my_job]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(JobStoreRequest $request, Job $my_job)
     {
-        //
+        $my_job->update($request->validated());
+        return redirect()->route('my-jobs.index')->with('success', 'Job updated successfully .');
     }
 
     /**

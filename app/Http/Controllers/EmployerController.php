@@ -27,9 +27,5 @@ class EmployerController extends Controller
         return redirect()->route('job.index')->with('success', 'Your employer account was successfully created.');
     }
 
-       public function update(Request $request, string $id)
-    {
-        //
-    }
 
 }

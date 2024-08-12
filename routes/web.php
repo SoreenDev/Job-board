@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/',fn()=> to_route('job.index'));
+Route::get('/',fn() => to_route('job.index'));
 
 Route::get('login', fn() => to_route('auth.create'))->name('login'); # for middleware auth
-Route::resource('auth', AuthController::class)->only('store','create');
 Route::delete('logout' , fn() => to_route('auth.destroy'))->name('logout');
+Route::resource('auth', AuthController::class)->only('store','create');
 Route::delete('auth',[AuthController::class,'destroy'])->name('auth.destroy');
 
 Route::resource('job', JobController::class)->only('index','show');
@@ -32,6 +32,6 @@ Route::middleware('auth')->group(function(){
    Route::resource('job.application', JobApplicationController::class)->only('create','store');
    Route::resource('my_job_application', MyJobApplicationController::class)->only('index','destroy');
    Route::resource('employer', EmployerController::class)->only('create','store');
-   Route::resource('my-jobs', MyJobController::class)->middleware('employer');
+   Route::resource('my_jobs', MyJobController::class)->middleware('employer');
 
 });

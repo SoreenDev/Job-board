@@ -41,7 +41,7 @@
         <ul class=" flex space-x-6">
             @auth
                 <li>
-                    <a href="{{ route('my-jobs.index')}}">
+                    <a href="{{ route('my_jobs.index')}}">
                         My Job
                     </a>
                 </li>

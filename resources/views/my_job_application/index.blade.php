@@ -12,10 +12,10 @@
                         Your asking salary ${{ number_format($application->salary) }}
                     </div>
                     <div>
-                        Average asking salary ${{ number_format($application->job->job_applications_avg_salary) }}
+                        Average asking salary ${{ number_format($application->job->job_applications_avg_salary) ?? '' }}
                     </div>
                     <div>
-                       Other {{ $application->job->job_applications_count-1 >1 ? '$applicants ' : '$applicant ' }}{{$application->job->job_applications_count-1}}
+                       Other {{ $application->job->job_applications_count-1 > 1 ? '$applicants ' : '$applicant ' }}{{$application->job->job_applications_count-1 }}
 
                     </div>
                 </div>

@@ -24,11 +24,9 @@
         top: 0;
         bottom: 0;
         width: 40px;
-        /*background-color: #ffffff60;*/
         background: rgb(200,200,200);
         background: linear-gradient(90deg, rgba(200,200,200,0.05) 0%, rgba(255,255,255,0.20) 51%, rgba(200,200,200,0.05) 100%);
-        animation: boxAnomatio 6s ;
-        /*animation: boxAnomatio 8s alternate-reverse infinite;*/
+        animation: boxAnomatio 6s forwards;
     }
 </style>
 

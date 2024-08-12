@@ -1,7 +1,7 @@
 <x-layout>
-    <x-breadcrumbs :links="['My Jobs' => route('my-jobs.index') , 'Edite' => '#' ]" />
+    <x-breadcrumbs :links="['My Jobs' => route('my_jobs.index') , 'Edite' => '#' ]" />
     <x-card class="mt-8">
-        <form action="{{ route('my-jobs.update',$job ) }}" method="POST">
+        <form action="{{ route('my_jobs.update',$job ) }}" method="POST">
             @csrf @method('PUT')
             <div class="mb-4 grid grid-cols-2 gap-4">
                 <div>

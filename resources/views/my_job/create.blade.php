@@ -1,7 +1,7 @@
 <x-layout>
-    <x-breadcrumbs :links="['My Jobs' => route('my-jobs.index') , 'Create' => '#' ]" />
+    <x-breadcrumbs :links="['My Jobs' => route('my_jobs.index') , 'Create' => '#' ]" />
     <x-card class="mt-8">
-        <form action="{{ route('my-jobs.store') }}" method="POST">
+        <form action="{{ route('my_jobs.store') }}" method="POST">
             @csrf @method('POST')
             <div class="mb-4 grid grid-cols-2 gap-4">
                 <div>

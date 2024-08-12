@@ -38,7 +38,7 @@ class MyJobController extends Controller
 
         $request->user()->employer->jobs()->create($request->validated());
 
-        return redirect()->route('my-jobs.index')->with('success', 'Job has been created.');
+        return redirect()->route('my_jobs.index')->with('success', 'Job has been created.');
     }
 
     /**
@@ -58,7 +58,7 @@ class MyJobController extends Controller
         $this->authorize('update',[ Job::class , $my_job]);
 
         $my_job->update($request->validated());
-        return redirect()->route('my-jobs.index')->with('success', 'Job updated successfully .');
+        return redirect()->route('my_jobs.index')->with('success', 'Job updated successfully .');
     }
 
     /**
@@ -69,7 +69,7 @@ class MyJobController extends Controller
         $this->authorize('delete',[ Job::class , $my_job]);
         $my_job->delete();
 
-        return redirect()->route('my-jobs.index')->with('success', 'Job delete successfully .');
+        return redirect()->route('my_jobs.index')->with('success', 'Job delete successfully .');
 
     }
 }

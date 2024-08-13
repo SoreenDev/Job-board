@@ -6,8 +6,20 @@
             <div class="mb-4 grid grid-cols-2 gap-4">
 
                 <div>
-                    <div class="mb-1 font-semibold">Search</div>
-                    <x-text-input value="{{ request('search') }}" name="search" placeholder="Search for any text" />
+                    <div class="mb-1 font-semibold">Search In Titles</div>
+{{--                    <x-text-input value="{{ request('search') }}" name="search" placeholder="Search for any text" />--}}
+                    <input type="text" name="filter[title]" id="search"
+                        @class([
+                            ' w-full rounded-md border-0 py-1.5 px-2.5 text-sm ring-1 ring-slate-500 placeholder:text-slate-400 focus:ring-2',
+                            'ring-slate-500' => !$errors->has('search'),
+                            'ring-red-500' => $errors->has('search'),
+                    ])>
+
+                    @error('search')
+                    <div class=" mt-1 text-red-500 text-sm">
+                        {{ "* ".$message }}
+                    </div>
+                    @enderror
                 </div>
 
                 <div>
